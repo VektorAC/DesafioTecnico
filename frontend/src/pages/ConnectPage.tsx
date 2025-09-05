@@ -17,7 +17,7 @@ export default function ConnectPage() {
       setMsg('Ingresa el dominio completo: tienda.myshopify.com')
       return
     }
-    connectShopify(shopDomain) // redirige al backend (OAuth)
+    connectShopify(shopDomain)
   }
 
   const onConnectWoo = async () => {

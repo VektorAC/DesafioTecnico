@@ -7,9 +7,8 @@ use Illuminate\Support\Str;
 
 class ShopController extends Controller
 {
-    // SHOPIFY: inicia OAuth
     public function shopifyConnect(Request $r) {
-        $shop = $r->query('shop'); // tienda.myshopify.com
+        $shop = $r->query('shop');
         abort_unless($shop && str_ends_with($shop, '.myshopify.com'), 400, 'shop inválido');
 
         $state = Str::random(32);
@@ -24,7 +23,7 @@ class ShopController extends Controller
         return redirect()->away("https://{$shop}/admin/oauth/authorize?".http_build_query($params));
     }
 
-    // SHOPIFY: callback OAuth
+
     public function shopifyCallback(Request $r) {
         $data = $r->query();
         $hmac = $data['hmac'] ?? '';
@@ -60,10 +59,9 @@ class ShopController extends Controller
         return redirect('/products');
     }
 
-    // WOO: registra credenciales (site + key/secret)
     public function wooConnect(Request $r) {
         $r->validate([
-            'domain' => 'required|url',     // https://miwp.com
+            'domain' => 'required|url',
             'ck'     => 'required|string',
             'cs'     => 'required|string',
         ]);
@@ -79,8 +77,6 @@ class ShopController extends Controller
 
         return response()->json(['ok' => true, 'shop_id' => $shop->id]);
     }
-
-    // Listar tiendas del usuario
     public function index(Request $r) {
         $shops = Shop::orderByDesc('id')->get(['id','provider','domain','status','created_at']);
         return response()->json(['data' => $shops]);

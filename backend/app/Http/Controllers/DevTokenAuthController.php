@@ -19,13 +19,11 @@ class DevTokenAuthController extends Controller
             return response()->json(['message' => 'Credenciales inválidas'], 422);
         }
 
-        // Crea/obtiene el usuario “test”
         $user = User::firstOrCreate(
             ['email' => 'test@local.dev'],
             ['name' => 'Test', 'password' => bcrypt(Str::random(32))]
         );
 
-        // Crea token personal (Sanctum)
         $plain = $user->createToken('dev')->plainTextToken;
 
         return response()->json(['token' => $plain]);

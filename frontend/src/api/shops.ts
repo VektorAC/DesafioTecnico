@@ -16,7 +16,6 @@ export async function listShops(): Promise<ShopRow[]> {
 
 export function connectShopify(shopDomain: string) {
   const base = import.meta.env.VITE_API_URL || window.location.origin
-  // Redirige al flujo OAuth de tu backend
   window.location.href = `${base}/shops/connect?shop=${encodeURIComponent(shopDomain)}`
 }
 

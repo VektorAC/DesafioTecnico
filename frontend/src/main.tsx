@@ -7,6 +7,7 @@ import App from './App'
 import { queryClient } from './lib/queryClient'
 import { AuthProvider } from './context/authContext'
 import { ShopProvider } from './context/ShopContext'
+import 'antd/dist/reset.css';
 import './styles.css'
 
 const theme = createTheme({ palette: { mode: 'light' } })
@@ -17,7 +18,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <CssBaseline />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          
           <AuthProvider>
             <ShopProvider>
               <App />

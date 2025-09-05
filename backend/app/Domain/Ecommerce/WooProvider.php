@@ -11,12 +11,12 @@ class WooProvider implements EcommerceProvider
     public function __construct(private Shop $shop) {}
 
     private function base(): string {
-        $url = rtrim($this->shop->domain, '/');               // p.ej. https://miwp.com
+        $url = rtrim($this->shop->domain, '/');          
         return "{$url}/wp-json/wc/v3";
     }
 
     private function authParams(): array {
-        $c = $this->shop->getCredentials();                   // ['ck' => '...', 'cs' => '...']
+        $c = $this->shop->getCredentials();
         return ['consumer_key' => $c['ck'] ?? '', 'consumer_secret' => $c['cs'] ?? ''];
     }
 

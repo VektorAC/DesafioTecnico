@@ -16,7 +16,6 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Si ya hay sesión, redirige
   useEffect(() => {
     if (authed) navigate(next, { replace: true })
   }, [authed, navigate, next])

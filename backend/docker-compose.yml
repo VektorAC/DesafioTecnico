@@ -11,7 +11,7 @@ services:
   nginx:
     image: nginx:1.27
     ports:
-      - "80:80"               # backend quedará en http://localhost
+      - "80:80"
     volumes:
       - ./:/var/www/html
       - ./nginx.conf:/etc/nginx/conf.d/default.conf

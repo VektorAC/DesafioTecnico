@@ -17,20 +17,23 @@ export default function Layout() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 600 }}>
-            <Link to="/">Minimal Shop Admin</Link>
+            <Link to="/">Test Shop Admin</Link>
           </Typography>
-          {/* Navegación */}
+          
           <Button component={NavLink} to="/products" variant={isActive('/products') ? 'contained' : 'text'}>
             Productos
           </Button>
           <Button component={NavLink} to="/orders" variant={isActive('/orders') ? 'contained' : 'text'}>
             Pedidos
           </Button>
+          <Button component={NavLink} to="/metrics" variant={isActive('/metrics') ? 'contained' : 'text'}>
+            Métricas
+          </Button>
           <Button component={NavLink} to="/connect" variant={isActive('/connect') ? 'contained' : 'text'}>
             Conectar
           </Button>
 
-          {/* Selector y salir solo si hay sesión */}
+          
           {authed && <Box sx={{ ml: 2 }}><ShopSelect /></Box>}
           {authed && (
             <Button onClick={() => signout()} sx={{ ml: 1 }} variant="outlined">

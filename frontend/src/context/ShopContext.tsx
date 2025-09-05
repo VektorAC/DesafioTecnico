@@ -36,7 +36,6 @@ export function ShopProvider({ children }: { children: React.ReactNode }) {
     if (authed) {
       void refresh()
     } else {
-      // si no hay sesión, vacía estado y no llames al backend
       setShops([])
       setActiveShopId(null)
     }

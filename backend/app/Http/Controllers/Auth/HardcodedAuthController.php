@@ -15,18 +15,15 @@ class HardcodedAuthController extends Controller
             'password' => 'required|string',
         ]);
 
-        // credenciales fijas
         if (!($data['username'] === 'test' && $data['password'] === 'prueba123')) {
             return response()->json(['message' => 'Credenciales inválidas'], 422);
         }
-
-        // obtiene/crea usuario “test”
         $user = User::firstOrCreate(
             ['email' => 'test@local.dev'],
             ['name' => 'Test', 'password' => bcrypt(Str::random(32))]
         );
 
-        auth()->login($user);          // sesión guard web
+        auth()->login($user);
         $request->session()->regenerate();
 
         return response()->json(['ok' => true]);
