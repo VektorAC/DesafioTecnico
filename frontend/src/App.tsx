@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './components/layout'
+import LoginPage from './pages/LoginPage'
+import ProductsPage from './pages/ProductPage'
+import OrdersPage from './pages/OrdersPage'
+import ConnectPage from './pages/ConnectPage'
+import RequireAuth from './components/requireAuth'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        {/* index redirige a /products */}
+        <Route index element={<Navigate to="/products" replace />} />
+
+        <Route path="/login" element={<LoginPage />} />
+
+        {/* Rutas protegidas */}
+        <Route element={<RequireAuth />}>
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/orders" element={<OrdersPage />} />
+          <Route path="/connect" element={<ConnectPage />} />
+        </Route>
+
+        {/* catch-all */}
+        <Route path="*" element={<Navigate to="/products" replace />} />
+      </Route>
+    </Routes>
   )
 }
-
-export default App

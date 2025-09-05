@@ -1,0 +1,4 @@
+:root { --gap: 16px; }
+* { box-sizing: border-box; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; }
