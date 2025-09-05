@@ -131,7 +131,7 @@ login de desarrollo con token Bearer.
 ### Flujos de conexión de tiendas
 ## Modo Mock (sin cuentas reales)
 Si no hay tienda o faltan credenciales, la EcommerceProviderFactory cae en MockEcommerceProvider, para que la UI siempre tenga datos.
-Shopify (OAuth)
+Shopify
 
 ## Shopify (OAuth)
 
@@ -179,6 +179,7 @@ Back: `POST /shops/woo` con JSON:
 ## Métricas
 
 * GET /api/metrics?shop_id=&from=&to=
+
 **Respuesta:** KPIs (orders, revenue, aov), monthly_sales (YYYY-MM),
 top_products, status_breakdown, currency.
 
