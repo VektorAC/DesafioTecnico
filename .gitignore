@@ -1,30 +1,87 @@
-/vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
+############################
+# SO / editores
+############################
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
-
-storage/*.key
+############################
+# Entornos
+############################
 .env
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
+.env.*
+backend/.env
+backend/.env.*
+frontend/.env
+frontend/.env.*
 
-/public/build
-/storage/pail
-.env.backup
-.env.production
-.phpactor.json
-auth.json
+############################
+# Logs / cache generales
+############################
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.pid
+
+############################
+# Bases de datos / dumps
+############################
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+
+# Volúmenes/dirs de MySQL
+mysql-data/
+**/mysql-data/
+backend/mysql-data/
+
+
+woo-local/wpdata/
+woo-local/dbdata/
+**/wpdata/
+**/dbdata/
+
+############################
+# Frontend 
+############################
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/.eslintcache
+frontend/.parcel-cache
+frontend/.turbo
+
+
+
+############################
+# Backend 
+############################
+# Dependencias
+backend/vendor/
+backend/node_modules/
+
+# Builds / enlaces
+backend/public/storage
+
+# Claves / caches / logs
+backend/storage/*.key
+backend/storage/app/**
+backend/storage/framework/**
+backend/storage/logs/**
+backend/bootstrap/cache/**
+
+
+!backend/storage/app/.gitignore
+!backend/storage/app/public/.gitignore
+!backend/storage/framework/.gitignore
+!backend/storage/logs/.gitignore
+!backend/bootstrap/cache/.gitignore
+
+# PHPUnit cache
+backend/.phpunit.result.cache
